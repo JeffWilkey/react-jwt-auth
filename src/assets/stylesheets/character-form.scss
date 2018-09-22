@@ -1,0 +1,22 @@
+.character-form {
+  display: flex;
+  .character-name {
+    margin-right: 10px;
+    .character-input {
+      background-color: hsl(0, 0%, 98%);
+      border: solid 1px hsl(0, 0%, 80%);
+      border-radius: 4px;
+      min-height: 38px;
+      box-sizing: border-box;
+      font-size: 16px;
+      font-family: 'Lato', sans-serif;
+      &:focus {
+        outline: none;
+        border: solid 2px #2179FF;
+      }
+    }
+  }
+  .character-realm {
+    width: 150px;
+  }
+}

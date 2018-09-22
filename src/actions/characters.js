@@ -5,7 +5,7 @@ export const FETCH_CHARACTERS_SUCCESS = 'FETCH_CHARACTERS_SUCCESS';
 export const fetchCharactersSuccess = data => ({
   type: FETCH_CHARACTERS_SUCCESS,
   data
-})
+});
 
 export const FETCH_CHARACTERS_ERROR = 'FETCH_CHARACTERS_ERROR';
 export const fetchCharactersError = error => ({

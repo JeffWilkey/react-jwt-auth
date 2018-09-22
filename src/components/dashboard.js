@@ -1,25 +1,29 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import _ from 'lodash';
 import requiresLogin from './requires-login';
-import {fetchProtectedData} from '../actions/protected-data';
+import {fetchCharacters} from '../actions/characters';
+import CharacterForm from './character-form';
+
 
 export class Dashboard extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchProtectedData());
+        this.props.dispatch(fetchCharacters());
     }
 
     render() {
-        return (
-            <div className="dashboard">
-                <div className="dashboard-username">
-                    Username: {this.props.username}
-                </div>
-                <div className="dashboard-name">Name: {this.props.name}</div>
-                <div className="dashboard-protected-data">
-                    Protected data: {this.props.protectedData}
-                </div>
+      const renderCharacters = this.props.characters.map(({name, realm}) => (
+        <p>{name} - {realm}</p>
+      ));
+
+      return (
+          <div className="dashboard">
+            <CharacterForm/>
+            <div className="dashboard-protected-data">
+                {renderCharacters}
             </div>
-        );
+          </div>
+      );
     }
 }
 
@@ -28,7 +32,8 @@ const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
         name: `${currentUser.firstName} ${currentUser.lastName}`,
-        protectedData: state.protectedData.data
+        protectedData: state.protectedData.data,
+        characters: state.characters.data
     };
 };
 

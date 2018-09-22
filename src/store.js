@@ -5,13 +5,16 @@ import {loadAuthToken} from './local-storage';
 import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import charactersReducer from './reducers/characters';
+import realmsReducer from './reducers/realms';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
 const store = createStore(
     combineReducers({
         form: formReducer,
         auth: authReducer,
-        protectedData: protectedDataReducer
+        protectedData: protectedDataReducer,
+        characters: charactersReducer,
+        realms: realmsReducer
     }),
     applyMiddleware(thunk)
 );
