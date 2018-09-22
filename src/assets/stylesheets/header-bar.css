@@ -1,0 +1,22 @@
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px; }
+  .header-bar .header-bar-logo-container {
+    display: flex;
+    align-items: center; }
+    .header-bar .header-bar-logo-container .header-bar-logo {
+      max-height: 60px; }
+    .header-bar .header-bar-logo-container .header-bar-logo-text {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300; }
+  .header-bar .header-bar-user-container {
+    display: flex;
+    align-items: center; }
+    .header-bar .header-bar-user-container .header-bar-user-avatar {
+      height: 25px;
+      border-radius: 12.5px;
+      margin-right: 5px; }
+    .header-bar .header-bar-user-container .header-bar-user-name {
+      font-family: 'Lato', sans-serif; }

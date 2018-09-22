@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
+import '../assets/stylesheets/header-bar.css';
+import logo from '../assets/images/logo.jpg';
 
 export class HeaderBar extends React.Component {
     logOut() {
@@ -14,19 +16,31 @@ export class HeaderBar extends React.Component {
         let logOutButton;
         if (this.props.loggedIn) {
             logOutButton = (
-                <button onClick={() => this.logOut()}>Log out</button>
+                <p className='logout-wrapper'>
+                  {'('}<a className='logout' onClick={() => this.logOut()}>logout</a>{')'}
+                </p>
             );
         }
+        const { currentUser } = this.props;
+
         return (
             <div className="header-bar">
-                <h1>Foo App</h1>
+              <div className="header-bar-logo-container">
+                <img className="header-bar-logo" src={logo} alt="World of Warcraft Logo"/>
+                <h1 className="header-bar-logo-text">Progress</h1>
+              </div>
+              <div className="header-bar-user-container">
+                <img className="header-bar-user-avatar" src={currentUser ? currentUser.gravatar : logo}/>
+                <p className="header-bar-user-name">{currentUser ? currentUser.username : ''}</p>
                 {logOutButton}
+              </div>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => ({
+    currentUser: state.auth.currentUser,
     loggedIn: state.auth.currentUser !== null
 });
 
