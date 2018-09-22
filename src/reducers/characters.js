@@ -1,9 +1,11 @@
 import {
   FETCH_CHARACTERS_SUCCESS,
-  FETCH_CHARACTERS_ERROR
+  FETCH_CHARACTERS_ERROR,
+  ADD_CHARACTER_SUCCESS,
 } from '../actions/characters';
 
 const initialState = {
+  addedCharacter: {},
   data: [],
   error: null
 };
@@ -17,6 +19,10 @@ export default function reducer(state = initialState, action) {
   } else if (action.type === FETCH_CHARACTERS_ERROR) {
     return Object.assign({}, state, {
       error: action.error
+    });
+  } else if (action.type === ADD_CHARACTER_SUCCESS) {
+    return Object.assign({}, state, {
+      addedCharacter: action.data
     });
   }
   return state;

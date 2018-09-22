@@ -1,4 +1,4 @@
-import {API_BASE_URL} from '../config';
+import {API_BASE_URL, BLIZZARD_API_BASE_URL, BLIZZARD_API_KEY} from '../config';
 import {normalizeResponseErrors} from './utils';
 
 export const FETCH_CHARACTERS_SUCCESS = 'FETCH_CHARACTERS_SUCCESS';
@@ -12,6 +12,12 @@ export const fetchCharactersError = error => ({
     type: FETCH_CHARACTERS_ERROR,
     error
 });
+
+export const ADD_CHARACTER_SUCCESS = 'ADD_CHARACTER_SUCCESS'
+export const addCharacterSuccess = data => ({
+  type: ADD_CHARACTER_SUCCESS,
+  data
+})
 
 export const fetchCharacters = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
@@ -27,4 +33,31 @@ export const fetchCharacters = () => (dispatch, getState) => {
     .catch(err => {
       dispatch(fetchCharactersError(err));
     });
+}
+
+export const addCharacter = ({name, realm}) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${BLIZZARD_API_BASE_URL}/wow/character/${realm.value}/${name}?locale=en_US&apikey=${BLIZZARD_API_KEY}`, {
+    method: 'GET'
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => {
+      if (res.status === 200) {
+        return fetch(`${API_BASE_URL}/characters`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify({ name: name, realm: realm.label, realmSlug: realm.value})
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .then(({data}) => dispatch(addCharacterSuccess(data)))
+        .catch(err => {
+          dispatch(fetchCharactersError(err));
+        });
+      }
+    })
+
 }

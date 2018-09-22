@@ -1,0 +1,15 @@
+.dashboard {
+  text-align: center;
+  .dashboard-character-form-header {
+    font-size: 1rem;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 760px) {
+  .dashboard {
+    text-align: left;
+    .dashboard-character-form-header {
+      text-align: center;
+    }
+  }
+}

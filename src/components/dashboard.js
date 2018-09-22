@@ -4,6 +4,7 @@ import _ from 'lodash';
 import requiresLogin from './requires-login';
 import {fetchCharacters} from '../actions/characters';
 import CharacterForm from './character-form';
+import '../assets/stylesheets/dashboard.css';
 
 
 export class Dashboard extends React.Component {

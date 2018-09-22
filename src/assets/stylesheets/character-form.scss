@@ -1,15 +1,18 @@
 .character-form {
-  display: flex;
+  display: inline-block;
+  align-items: center;
+  width: 172px;
   .character-name {
-    margin-right: 10px;
+    margin: 0 10px 10px 0;
+    width: 172px;
     .character-input {
       background-color: hsl(0, 0%, 98%);
       border: solid 1px hsl(0, 0%, 80%);
       border-radius: 4px;
       min-height: 38px;
       box-sizing: border-box;
-      font-size: 16px;
       font-family: 'Lato', sans-serif;
+      font-size: 16px;
       &:focus {
         outline: none;
         border: solid 2px #2179FF;
@@ -17,6 +20,34 @@
     }
   }
   .character-realm {
-    width: 150px;
+    width: 172px;
+    margin: 0 20px 10px 0;
+  }
+  .form-submit {
+    height: 38px;
+    margin: 10px 0 10px 0;
+    border-radius: 4px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    border: solid 2px #597395;
+    background-color: white;
+    color: #597395;
+    transition: .2s;
+    cursor: pointer;
+    &:hover {
+      background-color: #597395;
+      color: white;
+    }
+  }
+}
+
+@media (min-width: 760px) {
+  .character-form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    .form-submit {
+      margin-top: 19px;
+    }
   }
 }

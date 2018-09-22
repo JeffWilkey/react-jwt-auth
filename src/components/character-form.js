@@ -5,11 +5,16 @@ import Select from 'react-select';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 import {fetchRealms} from '../actions/realms';
+import {addCharacter} from '../actions/characters';
 import '../assets/stylesheets/character-form.css';
 
 class CharacterForm extends Component {
   componentDidMount() {
     this.props.dispatch(fetchRealms());
+  }
+
+  onSubmit(values) {
+    return this.props.dispatch(addCharacter(values))
   }
   render() {
     const { realms } = this.props;
@@ -45,6 +50,9 @@ class CharacterForm extends Component {
             }
           />
         </div>
+        <button className="form-submit">
+          Add Character
+        </button>
       </form>
     )
   }
