@@ -2,6 +2,7 @@ import {
   FETCH_CHARACTERS_SUCCESS,
   FETCH_CHARACTERS_ERROR,
   ADD_CHARACTER_SUCCESS,
+  ADD_CHARACTER_ERROR,
 } from '../actions/characters';
 
 const initialState = {
@@ -22,7 +23,12 @@ export default function reducer(state = initialState, action) {
     });
   } else if (action.type === ADD_CHARACTER_SUCCESS) {
     return Object.assign({}, state, {
-      addedCharacter: action.data
+      addedCharacter: action.data,
+      error: null
+    });
+  } else if (action.type === ADD_CHARACTER_ERROR) {
+    return Object.assign({}, state, {
+      error: action.error
     });
   }
   return state;

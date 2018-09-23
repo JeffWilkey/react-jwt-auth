@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  background-color: #333;
   .header-bar-logo-container {
     display: flex;
     align-items: center;
@@ -12,11 +13,13 @@
     .header-bar-logo-text {
       font-family: 'Lato', sans-serif;
       font-weight: 300;
+      color: #fff;
     }
   }
   .header-bar-user-container {
     display: flex;
     align-items: center;
+    color: #fff;
     .header-bar-user-avatar {
       height: 25px;
       border-radius: 12.5px;
@@ -24,6 +27,7 @@
     }
     .header-bar-user-name {
       font-family: 'Lato', sans-serif;
+      color: #fff;
     }
   }
 }

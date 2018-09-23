@@ -3,6 +3,9 @@
   .dashboard .dashboard-character-form-header {
     font-size: 1rem;
     margin: 0 auto; }
+  .dashboard .none-header {
+    text-align: center;
+    color: #bababa; }
 
 @media (min-width: 760px) {
   .dashboard {

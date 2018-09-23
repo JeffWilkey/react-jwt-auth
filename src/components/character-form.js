@@ -13,8 +13,9 @@ class CharacterForm extends Component {
     this.props.dispatch(fetchRealms());
   }
 
-  onSubmit(values) {
-    return this.props.dispatch(addCharacter(values))
+  onSubmit = async (values) => {
+    await this.props.dispatch(addCharacter(values))
+    this.props.onSubmit();
   }
   render() {
     const { realms } = this.props;
@@ -26,7 +27,7 @@ class CharacterForm extends Component {
           this.onSubmit(values)
         )}>
         <div className="character-name">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name" className="character-label">Name</label>
           <Field
             className="character-input"
             component={Input}
@@ -36,7 +37,7 @@ class CharacterForm extends Component {
           />
         </div>
         <div className="character-realm">
-          <label htmlFor="realm">Realm</label>
+          <label htmlFor="realm" className="character-label">Realm</label>
           <Field name='realm'
             component={props =>
               <Select

@@ -1,7 +1,10 @@
 .character-form {
   display: inline-block;
   align-items: center;
-  width: 172px; }
+  width: 172px;
+  background-color: #333; }
+  .character-form .character-label {
+    color: #fff; }
   .character-form .character-name {
     margin: 0 10px 10px 0;
     width: 172px; }
@@ -25,13 +28,13 @@
     border-radius: 4px;
     font-family: 'Lato', sans-serif;
     font-size: 16px;
-    border: solid 2px #597395;
-    background-color: white;
-    color: #597395;
+    border: solid 2px #EDCA19;
+    background-color: #333;
+    color: #EDCA19;
     transition: .2s;
     cursor: pointer; }
     .character-form .form-submit:hover {
-      background-color: #597395;
+      background-color: #EDCA19;
       color: white; }
 
 @media (min-width: 760px) {

@@ -2,7 +2,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif; }
+  font-family: 'Lato', sans-serif;
+  background-color: #333; }
 
 .logout {
   color: #44c3ed;
@@ -11,3 +12,14 @@ body {
   margin: 0 1px; }
   .logout:hover {
     color: #65d5f7; }
+
+.error-toast {
+  background-color: #f25c66;
+  color: white;
+  padding: 7px 10px 8px 10px;
+  margin-left: auto;
+  transition: .4s;
+  min-width: 200px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-bottom: 10px; }

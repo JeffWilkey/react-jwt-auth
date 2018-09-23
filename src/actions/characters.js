@@ -19,6 +19,12 @@ export const addCharacterSuccess = data => ({
   data
 })
 
+export const ADD_CHARACTER_ERROR = 'ADD_CHARACTER_ERROR'
+export const addCharacterError = error => ({
+  type: ADD_CHARACTER_ERROR,
+  error
+})
+
 export const fetchCharacters = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/characters`, {
@@ -41,23 +47,31 @@ export const addCharacter = ({name, realm}) => (dispatch, getState) => {
     method: 'GET'
   })
     .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
     .then(res => {
-      if (res.status === 200) {
-        return fetch(`${API_BASE_URL}/characters`, {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify({ name: name, realm: realm.label, realmSlug: realm.value})
+      return fetch(`${API_BASE_URL}/characters`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          realm: realm.label,
+          realmSlug: realm.value,
+          class: res.class,
+          race: res.race,
+          faction: res.faction
         })
-        .then(res => res.json())
-        .then(res => console.log(res))
-        .then(({data}) => dispatch(addCharacterSuccess(data)))
-        .catch(err => {
-          dispatch(fetchCharactersError(err));
-        });
-      }
+      })
+      .then(res => res.json())
+      .then(({data}) => dispatch(addCharacterSuccess(data)))
+      .catch(err => {
+        dispatch(addCharacterError(err));
+      });
+    })
+    .catch(err => {
+      dispatch(addCharacterError(err));
     })
 
 }

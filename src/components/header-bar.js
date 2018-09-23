@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import '../assets/stylesheets/header-bar.css';
-import logo from '../assets/images/logo.jpg';
+import logo from '../assets/images/logo.png';
 
 export class HeaderBar extends React.Component {
     logOut() {

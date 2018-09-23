@@ -6,6 +6,8 @@ import authReducer from './reducers/auth';
 import protectedDataReducer from './reducers/protected-data';
 import charactersReducer from './reducers/characters';
 import realmsReducer from './reducers/realms';
+import characterClassesReducer from './reducers/character-classes';
+import characterRacesReducer from './reducers/character-races';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
 const store = createStore(
@@ -14,7 +16,9 @@ const store = createStore(
         auth: authReducer,
         protectedData: protectedDataReducer,
         characters: charactersReducer,
-        realms: realmsReducer
+        realms: realmsReducer,
+        classes: characterClassesReducer,
+        races: characterRacesReducer
     }),
     applyMiddleware(thunk)
 );
