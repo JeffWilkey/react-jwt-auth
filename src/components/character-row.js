@@ -41,21 +41,32 @@ class CharacterRow extends Component {
     }
   }
 
-  getClassName = (classId) => {
+  getClassName = () => {
     const { classes, character } = this.props;
     return _.find(classes, ['id', character.class]).name;
   }
 
+  getRaceName = () => {
+    const { races, character } = this.props;
+    return _.find(races, ['id', character.race]).name;
+  }
+
   render() {
     const { character, classes, races } = this.props;
-    const characterClassName = classes.length ? this.getClassName(character.class) : 'loading';
+    const characterClassName = classes.length ? this.getClassName() : 'Loading...';
+    const characterClassColor = this.getClassColor(characterClassName);
+    const characterRaceName = races.length ? this.getRaceName() : 'Loading...';
+
     return (
-      <div className="character-row">
-        <p>{character.name}</p>
-        <p>{character.realm}</p>
-        <p style={{ color: this.getClassColor(characterClassName)}}>
-          {classes.length ? characterClassName : 'Loading...'}
+      <div style={{ 'border-color': characterClassColor, color: characterClassColor}} className="character-row">
+        <p className="character-name column">{character.name}</p>
+        <p className="character-race column">
+          {races.length ? characterRaceName : 'Loading...'}
         </p>
+        <p className="character-class column">
+          {characterClassName}
+        </p>
+        <p className="character-realm column">{character.realm}</p>
       </div>
     )
   }

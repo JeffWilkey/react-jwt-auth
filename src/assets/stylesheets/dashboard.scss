@@ -1,8 +1,16 @@
 .dashboard {
   text-align: center;
-  .dashboard-character-form-header {
-    font-size: 1rem;
+  .dashboard-character-table-header {
+    box-sizing: border-box;
+    display: flex;
+    width: 90%;
     margin: 0 auto;
+    padding: 0 10px 5px 10px;
+    color: #EDCA19;
+    .column {
+      flex: 1;
+      margin-bottom: 0;
+    }
   }
   .none-header {
     text-align: center;
@@ -12,8 +20,8 @@
 @media (min-width: 760px) {
   .dashboard {
     text-align: left;
-    .dashboard-character-form-header {
-      text-align: center;
+    .dashboard-character-table-header {
+      width: 60%;
     }
   }
 }

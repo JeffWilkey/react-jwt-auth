@@ -1,4 +1,28 @@
 .character-row {
+  box-sizing: border-box;
   display: flex;
   background-color: #333;
+  border: solid 1px #000;
+  margin: 5px auto;
+  width: 90%;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: .2s;
+  .column {
+    flex: 1;
+    margin: 5px 0;
+  }
+  .pipe {
+    border-right: solid 1px #000;
+  }
+  &:hover {
+    cursor: pointer;
+    border-width: 3px;
+  }
+}
+
+@media (min-width: 760px) {
+  .character-row {
+    width: 60%;
+  }
 }

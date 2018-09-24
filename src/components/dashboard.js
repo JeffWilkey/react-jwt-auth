@@ -35,6 +35,12 @@ export class Dashboard extends React.Component {
           <div className="dashboard">
             {error}
             <CharacterForm onSubmit={this.handleSubmit}/>
+            <div className="dashboard-character-table-header">
+              <p className="column">Name</p>
+              <p className="column">Race</p>
+              <p className="column">Class</p>
+              <p className="column">Realm</p>
+            </div>
             {characters.length ? renderCharacters : <p className="none-header">No Tracked Characters</p>}
           </div>
       );
