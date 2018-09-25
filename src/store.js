@@ -8,6 +8,7 @@ import charactersReducer from './reducers/characters';
 import realmsReducer from './reducers/realms';
 import characterClassesReducer from './reducers/character-classes';
 import characterRacesReducer from './reducers/character-races';
+import characterDetailReducer from './reducers/character-detail';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 
 const store = createStore(
@@ -16,6 +17,7 @@ const store = createStore(
         auth: authReducer,
         protectedData: protectedDataReducer,
         characters: charactersReducer,
+        character: characterDetailReducer,
         realms: realmsReducer,
         classes: characterClassesReducer,
         races: characterRacesReducer

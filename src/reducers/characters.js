@@ -2,7 +2,7 @@ import {
   FETCH_CHARACTERS_SUCCESS,
   FETCH_CHARACTERS_ERROR,
   ADD_CHARACTER_SUCCESS,
-  ADD_CHARACTER_ERROR,
+  ADD_CHARACTER_ERROR
 } from '../actions/characters';
 
 const initialState = {

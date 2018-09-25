@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import _ from 'lodash';
+import { withRouter } from 'react-router-dom';
 import { fetchClasses } from '../actions/character-classes';
 import { fetchRaces } from '../actions/character-races';
+import { getClassColor } from '../utils/getClassColor';
 import '../assets/stylesheets/character-row.css';
 
 class CharacterRow extends Component {
@@ -10,35 +12,6 @@ class CharacterRow extends Component {
   componentWillMount() {
     this.props.dispatch(fetchClasses());
     this.props.dispatch(fetchRaces());
-  }
-
-  getClassColor = (className) => {
-    switch (className) {
-      case 'Death Knight':
-        return '#C41F3B'
-      case 'Demon Hunter':
-        return '#A330C9'
-      case 'Druid':
-        return '#FF7D0A'
-      case 'Hunter':
-        return '#ABD473'
-      case 'Mage':
-        return '#40C7EB'
-      case 'Monk':
-        return '#00FF96'
-      case 'Paladin':
-        return '#F58CBA'
-      case 'Priest':
-        return '#FFFFFF'
-      case 'Rogue':
-        return '#FFF569'
-      case 'Shaman':
-        return '#0070DE'
-      case 'Warlock':
-        return '#8787ED'
-      case 'Warrior':
-        return '#C79C6E'
-    }
   }
 
   getClassName = () => {
@@ -52,13 +25,12 @@ class CharacterRow extends Component {
   }
 
   render() {
-    const { character, classes, races } = this.props;
+    const { character, classes, races, history } = this.props;
     const characterClassName = classes.length ? this.getClassName() : 'Loading...';
-    const characterClassColor = this.getClassColor(characterClassName);
+    const characterClassColor = getClassColor(characterClassName);
     const characterRaceName = races.length ? this.getRaceName() : 'Loading...';
-
     return (
-      <div style={{ 'border-color': characterClassColor, color: characterClassColor}} className="character-row">
+      <div style={{ borderColor: characterClassColor, color: characterClassColor}} className="character-row" onClick={() => this.props.history.push(`/characters/${character.realmSlug}/${character.name}`)}>
         <p className="character-name column">{character.name}</p>
         <p className="character-race column">
           {races.length ? characterRaceName : 'Loading...'}
@@ -79,4 +51,4 @@ const mapStateToProps = state => {
   }
 };
 
-export default connect(mapStateToProps)(CharacterRow);
+export default withRouter(connect(mapStateToProps)(CharacterRow));

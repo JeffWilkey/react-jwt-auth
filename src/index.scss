@@ -16,6 +16,12 @@ body {
   }
 }
 
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 50px;
+}
+
 .error-toast {
   background-color: #f25c66;
   color: white;

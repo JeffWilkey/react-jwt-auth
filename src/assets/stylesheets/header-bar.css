@@ -6,7 +6,8 @@
   background-color: #333; }
   .header-bar .header-bar-logo-container {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    cursor: pointer; }
     .header-bar .header-bar-logo-container .header-bar-logo {
       max-height: 60px; }
     .header-bar .header-bar-logo-container .header-bar-logo-text {

@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import '../assets/stylesheets/header-bar.css';
@@ -25,7 +26,7 @@ export class HeaderBar extends React.Component {
 
         return (
             <div className="header-bar">
-              <div className="header-bar-logo-container">
+              <div className="header-bar-logo-container" onClick={() => this.props.history.push('/dashboard')}>
                 <img className="header-bar-logo" src={logo} alt="World of Warcraft Logo"/>
                 <h1 className="header-bar-logo-text">Progress</h1>
               </div>
@@ -44,4 +45,4 @@ const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(HeaderBar);
+export default withRouter(connect(mapStateToProps)(HeaderBar));

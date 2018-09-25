@@ -13,6 +13,11 @@ body {
   .logout:hover {
     color: #65d5f7; }
 
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 50px; }
+
 .error-toast {
   background-color: #f25c66;
   color: white;

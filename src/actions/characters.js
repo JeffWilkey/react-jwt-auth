@@ -13,17 +13,17 @@ export const fetchCharactersError = error => ({
     error
 });
 
-export const ADD_CHARACTER_SUCCESS = 'ADD_CHARACTER_SUCCESS'
+export const ADD_CHARACTER_SUCCESS = 'ADD_CHARACTER_SUCCESS';
 export const addCharacterSuccess = data => ({
   type: ADD_CHARACTER_SUCCESS,
   data
-})
+});
 
-export const ADD_CHARACTER_ERROR = 'ADD_CHARACTER_ERROR'
+export const ADD_CHARACTER_ERROR = 'ADD_CHARACTER_ERROR';
 export const addCharacterError = error => ({
   type: ADD_CHARACTER_ERROR,
   error
-})
+});
 
 export const fetchCharacters = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
@@ -73,5 +73,4 @@ export const addCharacter = ({name, realm}) => (dispatch, getState) => {
     .catch(err => {
       dispatch(addCharacterError(err));
     })
-
 }
