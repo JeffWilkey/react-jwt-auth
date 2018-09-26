@@ -23,6 +23,9 @@ class CharacterPage extends Component {
     },
     bossCount: 8 // boss count of default selected raid
   }
+  componentWillMount() {
+    this.setState({ loading: true })
+  }
   componentDidMount() {
     const { name, realm } = this.props.match.params;
     this.props.dispatch(fetchCharacterDetail(name, realm));
@@ -102,15 +105,15 @@ class CharacterPage extends Component {
                 <CharacterDetails character={this.props.character}/>
                 <div className="character-progression">
                   <div className="raid-top raid-normal">
-                    <h2>{this.props.character.length ? this.raidProgression('normal') : 'Loading...'}</h2>
+                    <h2>{progression ? this.raidProgression('normal') : 'Loading...'}</h2>
                     <h2>N</h2>
                   </div>
                   <div className="raid-top raid-heroic">
-                    <h2>{this.props.character.length ? this.raidProgression('heroic') : 'Loading...'}</h2>
+                    <h2>{progression ? this.raidProgression('heroic') : 'Loading...'}</h2>
                     <h2>H</h2>
                   </div>
                   <div className="raid-top raid-mythic">
-                    <h2>{this.props.character.length ? this.raidProgression('mythic') : 'Loading...'}</h2>
+                    <h2>{progression ? this.raidProgression('mythic') : 'Loading...'}</h2>
                     <h2>M</h2>
                   </div>
                 </div>
