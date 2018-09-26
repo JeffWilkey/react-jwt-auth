@@ -6,6 +6,7 @@ import {RingLoader} from 'react-spinners';
 import Select from 'react-select';
 import {fetchCharacterDetail} from '../actions/character-detail';
 import CharacterDetails from './character-details';
+import CharacterGear from './character-gear';
 import '../assets/stylesheets/character-page.css';
 
 const override = css`
@@ -45,16 +46,17 @@ class CharacterPage extends Component {
     _.find(raids, ['name', selectedRaid.value]).bosses.forEach(boss => {
       if (boss[`${difficulty}Kills`] > 0) {
         killCount += 1;
+      } else if (boss[`${difficulty}Kills`] === undefined) {
+        killCount = null;
       }
     })
-    return `${killCount} / ${bossCount}`;
+    return killCount !== null ? `${killCount} / ${bossCount}` : 'N/A';
   }
 
 
   handleChange = (e) => {
     const { raids } = this.props.character.progression;
     const bossCount = _.find(raids, ['name', e.value]).bosses.length;
-    console.log(bossCount)
     this.setState({
       selectedRaid: e,
       bossCount
@@ -63,8 +65,7 @@ class CharacterPage extends Component {
 
   render() {
     const { loading, selectedRaid } = this.state;
-    const { progression } = this.props.character;
-    console.log(progression);
+    const { progression, items } = this.props.character;
     return (
       <div className="character-page">
 
@@ -101,18 +102,21 @@ class CharacterPage extends Component {
                 <CharacterDetails character={this.props.character}/>
                 <div className="character-progression">
                   <div className="raid-top raid-normal">
-                    <h2>{this.raidProgression('normal')}</h2>
+                    <h2>{this.props.character.length ? this.raidProgression('normal') : 'Loading...'}</h2>
                     <h2>N</h2>
                   </div>
                   <div className="raid-top raid-heroic">
-                    <h2>{this.raidProgression('heroic')}</h2>
+                    <h2>{this.props.character.length ? this.raidProgression('heroic') : 'Loading...'}</h2>
                     <h2>H</h2>
                   </div>
                   <div className="raid-top raid-mythic">
-                    <h2>{this.raidProgression('mythic')}</h2>
+                    <h2>{this.props.character.length ? this.raidProgression('mythic') : 'Loading...'}</h2>
                     <h2>M</h2>
                   </div>
                 </div>
+              </div>
+              <div className="character-main-2">
+                <CharacterGear items={items} character={this.props.character}/>
               </div>
             </div>
 

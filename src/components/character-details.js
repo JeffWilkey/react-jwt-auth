@@ -27,7 +27,6 @@ class CharacterDetails extends Component {
     const characterClassName = character.class && classes && classes.length ? this.getClassName() : 'Loading...';
     const characterClassSpec = talents && talents.length ? this.getSpecName() : 'Loading...';
     const characterClassColor = getClassColor(characterClassName);
-    console.log(character);
     return (
       <div className="character-details">
         <img className="character-image" src={`http://render-us.worldofwarcraft.com/character/${thumbnail}`}/>
@@ -43,9 +42,6 @@ class CharacterDetails extends Component {
           <h4 className="class-spec" style={{ color: characterClassColor }}>
             {characterClassSpec} {characterClassName}
           </h4>
-
-
-
         </div>
       </div>
     )

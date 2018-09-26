@@ -1,4 +1,4 @@
-import {API_BASE_URL, BLIZZARD_API_BASE_URL, BLIZZARD_API_KEY} from '../config';
+import {BLIZZARD_API_BASE_URL, BLIZZARD_API_KEY} from '../config';
 import {normalizeResponseErrors} from './utils';
 
 export const FETCH_CHARACTER_DETAIL_SUCCESS = 'FETCH_CHARACTER_DETAIL_SUCCESS';
@@ -14,7 +14,7 @@ export const fetchCharacterDetailError = error => ({
 });
 
 export const fetchCharacterDetail = (name, realm) => (dispatch) => {
-  return fetch(`${BLIZZARD_API_BASE_URL}/wow/character/${realm}/${name}?fields=guild+progression+hunterPets+talents&locale=en_US&apikey=${BLIZZARD_API_KEY}`, {
+  return fetch(`${BLIZZARD_API_BASE_URL}/wow/character/${realm}/${name}?fields=guild+progression+hunterPets+talents+items&locale=en_US&apikey=${BLIZZARD_API_KEY}`, {
     method: 'GET'
   })
     .then(res => normalizeResponseErrors(res))

@@ -1,0 +1,26 @@
+.character-gear {
+  flex: 1;
+  flex-direction: column; }
+  .character-gear .character-gear-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px; }
+    .character-gear .character-gear-header h1 {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 0 10px 0 0; }
+    .character-gear .character-gear-header .character-ilvl-wrapper {
+      padding: 3px 6px; }
+      .character-gear .character-gear-header .character-ilvl-wrapper h2 {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 300;
+        margin: 0; }
+
+@media (min-width: 760px) {
+  .character-gear {
+    flex-direction: row; }
+    .character-gear .character-gear-header {
+      justify-content: flex-start; } }

@@ -25,6 +25,15 @@ export class App extends React.Component {
         this.stopPeriodicRefresh();
     }
 
+    componentWillMount() {
+      const script1 = document.createElement("script");
+      const script2 = document.createElement("script");
+      script1.src = "/wowhead.js";
+      script2.src = "http://wow.zamimg.com/widgets/power.js";
+      document.head.appendChild(script1);
+      document.head.appendChild(script2);
+    }
+
     startPeriodicRefresh() {
         this.refreshInterval = setInterval(
             () => this.props.dispatch(refreshAuthToken()),

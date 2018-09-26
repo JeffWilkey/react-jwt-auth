@@ -1,10 +1,16 @@
 .character-page {
+
+  // Character Main
   .character-main {
     display: flex;
+    flex-direction: column;
+
     .character-details {
       display: flex;
       align-items: center;
       flex: 1;
+      margin-bottom: 20px;
+      justify-content: center;
       .character-image {
         max-height: 84px;
         border-radius: 50%;
@@ -72,9 +78,11 @@
       }
     }
   }
+
+  // Raid Selector
   .raid-select-wrapper {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     .raid-select {
@@ -91,12 +99,40 @@
       }
     }
   }
+
+  // Character Main 2
+  .character-main-2 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    margin-top: 10px;
+    border-top: solid 1px #444;
+    border-bottom: solid 1px #444;
+  }
 }
 
 @media (min-width: 760px) {
   .character-page {
+    // Character Main
     .character-main {
       height: 130px;
+      flex-direction: row;
+      justify-content: flex-start;
+      .character-details {
+        margin-bottom: 0;
+        justify-content: flex-start;
+      }
     }
+    // Raid Selector
+    .raid-select-wrapper {
+      justify-content: flex-end;
+    }
+    // Character Main 2
+    .character-main-2 {
+      display: flex;
+      flex-direction: row;
+    }
+
+
   }
 }
