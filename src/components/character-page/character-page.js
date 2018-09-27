@@ -4,10 +4,12 @@ import {connect} from 'react-redux';
 import _ from 'lodash';
 import {RingLoader} from 'react-spinners';
 import Select from 'react-select';
-import {fetchCharacterDetail} from '../actions/character-detail';
+import {fetchCharacterDetail} from '../../actions/character-detail';
 import CharacterDetails from './character-details';
 import CharacterGear from './character-gear';
-import '../assets/stylesheets/character-page.css';
+import CharacterRaidProgression from './character-raid-progression/index';
+import TabSelector from '../tab-selector';
+import '../../assets/stylesheets/character-page.css';
 
 const override = css`
     display: block;
@@ -21,7 +23,8 @@ class CharacterPage extends Component {
       label: 'Uldir',
       value: 'Uldir'
     },
-    bossCount: 8 // boss count of default selected raid
+    bossCount: 8, // boss count of default selected raid
+    selectedTab: 'raid_progression' // default selected tab for tab selector
   }
   componentWillMount() {
     this.setState({ loading: true })
@@ -67,7 +70,7 @@ class CharacterPage extends Component {
   }
 
   render() {
-    const { loading, selectedRaid } = this.state;
+    const { loading, selectedRaid, selectedTab } = this.state;
     const { progression, items } = this.props.character;
     return (
       <div className="character-page">
@@ -120,6 +123,30 @@ class CharacterPage extends Component {
               </div>
               <div className="character-main-2">
                 <CharacterGear items={items} character={this.props.character}/>
+              </div>
+              <div className="character-main-3">
+                <div className="character-main-3-header">
+                  <TabSelector
+                    tabs={[
+                      { label: 'Raid/Progression', value: 'raid_progression' },
+                      { label: 'Mythic+', value: 'mythic_plus' },
+                      { label: 'PVE Tools', value: 'pve_tools' }
+                    ]}
+                    handleSelect={(selectedTab) => this.setState({selectedTab})}
+                    selectedTab={this.state.selectedTab}
+                  />
+                </div>
+                { selectedTab === 'raid_progression' ?
+                  <CharacterRaidProgression
+                    selectedRaid={selectedRaid}
+                    progression={progression}
+                    raidSelectOptions={this.raidOptions()}
+                    handleRaidSelect={(selectedRaid) => this.setState({selectedRaid})}
+                  />
+                  :
+                  null
+                }
+
               </div>
             </div>
           }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import {fetchClasses} from '../actions/character-classes';
-import {getClassColor} from '../utils/getClassColor';
+import {fetchClasses} from '../../actions/character-classes';
+import {getClassColor} from '../../utils/getClassColor';
 
 const factionColors = ['#40aded', '#BA1A38']
 

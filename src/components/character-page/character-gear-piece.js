@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
 import Helmet from 'react-helmet';
-import { getQualityColor } from '../utils/getQualityColor';
-import '../assets/stylesheets/character-gear-piece.css';
+import { getQualityColor } from '../../utils/getQualityColor';
+import '../../assets/stylesheets/character-gear-piece.css';
 
 class CharacterGearPiece extends Component {
   constructWowheadData = () => {
@@ -36,8 +36,8 @@ class CharacterGearPiece extends Component {
 
       <div style={{ display: 'inline-block' }}>
         <div className="character-gear-piece" style={{ borderColor: getQualityColor(quality)}}>
-          <a href={`http://www.wowhead.com/item=${id}`} target="_blank" class="wowhead-link" data-wh-rename-link="true" data-wowhead={this.constructWowheadData()}>
-            <span class="iconmedium">
+          <a href={`http://www.wowhead.com/item=${id}`} target="_blank" className="wowhead-link" data-wh-rename-link="true" data-wowhead={this.constructWowheadData()}>
+            <span className="iconmedium">
               <ins style={{ backgroundImage: `url(${`https://wow.zamimg.com/images/wow/icons/medium/${icon}.jpg`})`}}></ins>
             </span>
           </a>

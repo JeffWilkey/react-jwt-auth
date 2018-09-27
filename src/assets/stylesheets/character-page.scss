@@ -89,6 +89,7 @@
       width: 200px;
       .select__control {
         background-color: #333;
+        border-color: #555;
         color: #fff !important;
         .select__single-value {
           color: #fff;
@@ -97,6 +98,9 @@
           color: #eee;
         }
       }
+    }
+    &.progression {
+      margin-top: 20px;
     }
   }
 
@@ -108,6 +112,11 @@
     margin-top: 10px;
     border-top: solid 1px #444;
     border-bottom: solid 1px #444;
+  }
+  .character-main-3 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
   }
 }
 
@@ -126,6 +135,9 @@
     // Raid Selector
     .raid-select-wrapper {
       justify-content: flex-end;
+      &.progression {
+        margin-top: -30px;
+      }
     }
     // Character Main 2
     .character-main-2 {

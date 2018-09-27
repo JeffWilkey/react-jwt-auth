@@ -1,0 +1,11 @@
+.tab-selector {
+  display: flex; }
+  .tab-selector .tab {
+    color: #555;
+    transition: .2s;
+    margin-right: 10px;
+    cursor: pointer; }
+    .tab-selector .tab.selected {
+      color: #fff;
+      padding-bottom: 5px;
+      border-bottom: solid 4px #fff; }

@@ -1,0 +1,63 @@
+// styles for character-raid-progression and all child components
+.character-raid-progression {
+  .character-boss-progression {
+    display: flex;
+    flex-direction: column;
+    .boss-row {
+      display: flex;
+      flex: 1;
+      max-width: 400px;
+      align-items: center;
+      &:first-child {
+        border-bottom: 1px solid #444;
+      }
+      .boss-field {
+        display: flex;
+        flex: 1;
+        margin: 5px 0;
+        color: #fff;
+        font-weight: 300;
+        &.boss-icon {
+          max-width: 30px;
+          max-height: 30px;
+          border: solid 3px #666;
+          border-radius: 5px;
+          margin-right: 5px;
+        }
+        &.boss-name {
+          flex: 3;
+          font-weight: 400;
+          color: #666;
+          &.header {
+            color: #fff;
+          }
+        }
+        &.boss-normal-kills {
+          justify-content: center;
+          &.header {
+            color: #0070dd;
+          }
+
+        }
+        &.boss-heroic-kills {
+          justify-content: center;
+          &.header {
+            color: #a335ee;
+          }
+
+        }
+        &.boss-mythic-kills {
+          justify-content: center;
+          &.header {
+            color: #ff8000;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 760px) {
+  .character-raid-progression {
+  }
+}

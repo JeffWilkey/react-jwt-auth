@@ -3,9 +3,10 @@ import { css } from 'react-emotion';
 import { connect } from 'react-redux';
 import {RingLoader} from 'react-spinners';
 import Script from 'react-load-script';
-import { getIlvlColor } from '../utils/getIlvlColor';
 import CharacterGearPiece from './character-gear-piece';
-import '../assets/stylesheets/character-gear.css';
+import { getIlvlColor } from '../../utils/getIlvlColor';
+
+import '../../assets/stylesheets/character-gear.css';
 
 const override = css`
     display: block;
@@ -56,10 +57,10 @@ class CharacterGear extends Component {
     trinket1,
     trinket2,
     mainHand,
-    offHand].map((item) => {
+    offHand].map((item, index) => {
       if (item) {
         return (
-          <CharacterGearPiece item={item} character={this.props.character}/>
+          <CharacterGearPiece key={`gear-piece-${index}-${item.id}`} item={item} character={this.props.character}/>
         )
       }
     })
