@@ -122,9 +122,7 @@ class CharacterPage extends Component {
                 <CharacterGear items={items} character={this.props.character}/>
               </div>
             </div>
-
           }
-
       </div>
     )
   }
