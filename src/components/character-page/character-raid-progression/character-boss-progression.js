@@ -5,11 +5,11 @@ import { getBossIconUrl } from '../../../utils/getBossIconUrl';
 
 class CharacterBossProgression extends Component {
   getColor = (boss) => {
-    if (boss.mythicKills) {
+    if (boss.mythicTimestamp) {
       return '#ff8000'
-    } else if (boss.heroicKills) {
+    } else if (boss.heroicTimestamp) {
       return '#a335ee'
-    } else if (boss.normalKills) {
+    } else if (boss.normalTimestamp) {
       return '#0070dd'
     } else {
       return '#666'

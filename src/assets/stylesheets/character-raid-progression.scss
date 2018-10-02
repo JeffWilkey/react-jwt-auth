@@ -1,12 +1,14 @@
 // styles for character-raid-progression and all child components
 .character-raid-progression {
+  display: flex;
+  flex-direction: column;
   .character-boss-progression {
     display: flex;
     flex-direction: column;
+    flex: 1;
     .boss-row {
       display: flex;
       flex: 1;
-      max-width: 400px;
       align-items: center;
       &:first-child {
         border-bottom: 1px solid #444;
@@ -36,6 +38,7 @@
           justify-content: center;
           &.header {
             color: #0070dd;
+            margin-left: 30px;
           }
 
         }
@@ -53,6 +56,22 @@
           }
         }
       }
+    }
+  }
+  .progress {
+    background-image: none;
+    background-color: #444;
+    .progress-bar-mythic {
+      background-color: #ff8000;
+      background-image: none;
+    }
+    .progress-bar-heroic {
+      background-color: #a335ee;
+      background-image: none;
+    }
+    .progress-bar-normal {
+      background-color: #0070dd;
+      background-image: none;
     }
   }
 }

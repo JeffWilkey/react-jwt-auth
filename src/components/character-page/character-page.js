@@ -70,7 +70,7 @@ class CharacterPage extends Component {
   }
 
   render() {
-    const { loading, selectedRaid, selectedTab } = this.state;
+    const { loading, selectedRaid, selectedTab, bossCount } = this.state;
     const { progression, items } = this.props.character;
     return (
       <div className="character-page">
@@ -142,6 +142,8 @@ class CharacterPage extends Component {
                     progression={progression}
                     raidSelectOptions={this.raidOptions()}
                     handleRaidSelect={(selectedRaid) => this.setState({selectedRaid})}
+                    bossCount={bossCount}
+                    raidProgression={this.raidProgression}
                   />
                   :
                   null

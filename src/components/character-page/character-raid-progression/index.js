@@ -1,13 +1,30 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
+import _ from 'lodash';
+import { ProgressBar } from 'react-bootstrap';
 import CharacterBossProgression from './character-boss-progression';
 import '../../../assets/stylesheets/character-raid-progression.css';
+import '../../../assets/stylesheets/bootstrap-theme.min.css';
+import '../../../assets/stylesheets/bootstrap.min.css';
 
 class CharacterRaidProgression extends Component {
+  killCount = (difficulty) => {
+    const { bossCount, selectedRaid, progression } = this.props;
+    const { raids } = progression;
+    let killCount = 0;
+    _.find(raids, ['name', selectedRaid.value]).bosses.forEach(boss => {
+      if (boss[`${difficulty}Kills`] > 0) {
+        killCount += 1;
+      } else if (boss[`${difficulty}Kills`] === undefined) {
+        killCount = null;
+      }
+    })
+    return killCount;
+  }
   render() {
-    const { progression, selectedRaid, raidSelectOptions } = this.props;
+    const { progression, selectedRaid, raidSelectOptions, bossCount } = this.props;
     return (
-      <div className="character-raid-progression">
+      <div>
         {
           progression && progression.raids ?
           <div className="raid-select-wrapper progression">
@@ -26,8 +43,16 @@ class CharacterRaidProgression extends Component {
           :
           ''
         }
-        <CharacterBossProgression progression={progression} selectedRaid={selectedRaid} />
+        <div className="character-raid-progression">
+          <ProgressBar>
+            <ProgressBar bsStyle="mythic" label={`Mythic ${this.killCount('mythic')}/${bossCount}`} key={1} now={(this.killCount('mythic')/bossCount * 100)} />
+            <ProgressBar bsStyle="heroic" label={`Heroic ${this.killCount('heroic')}/${bossCount}`} key={2} now={this.killCount('heroic')/bossCount * 100 - (this.killCount('mythic')/bossCount * 100)} />
+            <ProgressBar bsStyle="normal" label={`Normal ${this.killCount('normal')}/${bossCount}`} key={3} now={(this.killCount('normal')/bossCount * 100) - (this.killCount('heroic')/bossCount * 100) - (this.killCount('mythic')/bossCount * 100)}/>
+          </ProgressBar>
+          <CharacterBossProgression progression={progression} selectedRaid={selectedRaid} />
+        </div>
       </div>
+
     )
   }
 }

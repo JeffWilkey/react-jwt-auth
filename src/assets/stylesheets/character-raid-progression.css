@@ -1,40 +1,56 @@
-.character-raid-progression .character-boss-progression {
+.character-raid-progression {
   display: flex;
   flex-direction: column; }
-  .character-raid-progression .character-boss-progression .boss-row {
+  .character-raid-progression .character-boss-progression {
     display: flex;
-    flex: 1;
-    max-width: 400px;
-    align-items: center; }
-    .character-raid-progression .character-boss-progression .boss-row:first-child {
-      border-bottom: 1px solid #444; }
-    .character-raid-progression .character-boss-progression .boss-row .boss-field {
+    flex-direction: column;
+    flex: 1; }
+    .character-raid-progression .character-boss-progression .boss-row {
       display: flex;
       flex: 1;
-      margin: 5px 0;
-      color: #fff;
-      font-weight: 300; }
-      .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-icon {
-        max-width: 30px;
-        max-height: 30px;
-        border: solid 3px #666;
-        border-radius: 5px;
-        margin-right: 5px; }
-      .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-name {
-        flex: 3;
-        font-weight: 400;
-        color: #666; }
-        .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-name.header {
-          color: #fff; }
-      .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-normal-kills {
-        justify-content: center; }
-        .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-normal-kills.header {
-          color: #0070dd; }
-      .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-heroic-kills {
-        justify-content: center; }
-        .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-heroic-kills.header {
-          color: #a335ee; }
-      .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-mythic-kills {
-        justify-content: center; }
-        .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-mythic-kills.header {
-          color: #ff8000; }
+      align-items: center; }
+      .character-raid-progression .character-boss-progression .boss-row:first-child {
+        border-bottom: 1px solid #444; }
+      .character-raid-progression .character-boss-progression .boss-row .boss-field {
+        display: flex;
+        flex: 1;
+        margin: 5px 0;
+        color: #fff;
+        font-weight: 300; }
+        .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-icon {
+          max-width: 30px;
+          max-height: 30px;
+          border: solid 3px #666;
+          border-radius: 5px;
+          margin-right: 5px; }
+        .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-name {
+          flex: 3;
+          font-weight: 400;
+          color: #666; }
+          .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-name.header {
+            color: #fff; }
+        .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-normal-kills {
+          justify-content: center; }
+          .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-normal-kills.header {
+            color: #0070dd;
+            margin-left: 30px; }
+        .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-heroic-kills {
+          justify-content: center; }
+          .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-heroic-kills.header {
+            color: #a335ee; }
+        .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-mythic-kills {
+          justify-content: center; }
+          .character-raid-progression .character-boss-progression .boss-row .boss-field.boss-mythic-kills.header {
+            color: #ff8000; }
+  .character-raid-progression .progress {
+    background-image: none;
+    background-color: #444; }
+    .character-raid-progression .progress .progress-bar-mythic {
+      background-color: #ff8000;
+      background-image: none; }
+    .character-raid-progression .progress .progress-bar-heroic {
+      background-color: #a335ee;
+      background-image: none; }
+    .character-raid-progression .progress .progress-bar-normal {
+      background-color: #0070dd;
+      background-image: none; }
