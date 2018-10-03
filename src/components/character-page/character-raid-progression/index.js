@@ -16,13 +16,16 @@ class CharacterRaidProgression extends Component {
       if (boss[`${difficulty}Kills`] > 0) {
         killCount += 1;
       } else if (boss[`${difficulty}Kills`] === undefined) {
-        killCount = null;
+        killCount = 0;
       }
     })
     return killCount;
   }
   render() {
     const { progression, selectedRaid, raidSelectOptions, bossCount } = this.props;
+    console.log(`Normal ${this.killCount('normal')}/${bossCount}`)
+    console.log(this.killCount('heroic')/bossCount * 100)
+    console.log(this.killCount('mythic')/bossCount * 100)
     return (
       <div>
         {
@@ -45,9 +48,19 @@ class CharacterRaidProgression extends Component {
         }
         <div className="character-raid-progression">
           <ProgressBar>
-            <ProgressBar bsStyle="mythic" label={`Mythic ${this.killCount('mythic')}/${bossCount}`} key={1} now={(this.killCount('mythic')/bossCount * 100)} />
-            <ProgressBar bsStyle="heroic" label={`Heroic ${this.killCount('heroic')}/${bossCount}`} key={2} now={this.killCount('heroic')/bossCount * 100 - (this.killCount('mythic')/bossCount * 100)} />
-            <ProgressBar bsStyle="normal" label={`Normal ${this.killCount('normal')}/${bossCount}`} key={3} now={(this.killCount('normal')/bossCount * 100) - (this.killCount('heroic')/bossCount * 100) - (this.killCount('mythic')/bossCount * 100)}/>
+            { this.killCount('mythic') ?
+              <ProgressBar bsStyle="mythic" label={`Mythic ${this.killCount('mythic')}/${bossCount}`} key={1} now={(this.killCount('mythic')/bossCount * 100)} />
+              :
+              null
+            }
+            {
+              this.killCount('heroic') ?
+              <ProgressBar bsStyle="heroic" label={`Heroic ${this.killCount('heroic')}/${bossCount}`} key={2} now={(this.killCount('heroic')/bossCount * 100) - (this.killCount('mythic')/bossCount * 100)} />
+              :
+              null
+            }
+
+            <ProgressBar bsStyle="normal" label={`Normal ${this.killCount('normal')}/${bossCount}`} key={3} now={this.killCount('normal') ? (this.killCount('normal')/bossCount * 100) - (this.killCount('heroic')/bossCount * 100) - (this.killCount('mythic')/bossCount * 100) : 8}/>
           </ProgressBar>
           <CharacterBossProgression progression={progression} selectedRaid={selectedRaid} />
         </div>

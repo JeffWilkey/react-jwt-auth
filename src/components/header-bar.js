@@ -31,7 +31,11 @@ export class HeaderBar extends React.Component {
                 <h1 className="header-bar-logo-text">Progress</h1>
               </div>
               <div className="header-bar-user-container">
-                <img className="header-bar-user-avatar" src={currentUser ? currentUser.gravatar : logo}/>
+                { this.props.loggedIn ?
+                  <img className="header-bar-user-avatar" src={currentUser ? currentUser.gravatar : logo}/>
+                  :
+                  null
+                }
                 <p className="header-bar-user-name">{currentUser ? currentUser.username : ''}</p>
                 {logOutButton}
               </div>

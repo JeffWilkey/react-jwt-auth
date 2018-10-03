@@ -129,8 +129,8 @@ class CharacterPage extends Component {
                   <TabSelector
                     tabs={[
                       { label: 'Raid/Progression', value: 'raid_progression' },
-                      { label: 'Mythic+', value: 'mythic_plus' },
-                      { label: 'PVE Tools', value: 'pve_tools' }
+                      // { label: 'Mythic+', value: 'mythic_plus' },
+                      // { label: 'PVE Tools', value: 'pve_tools' }
                     ]}
                     handleSelect={(selectedTab) => this.setState({selectedTab})}
                     selectedTab={this.state.selectedTab}
@@ -141,7 +141,7 @@ class CharacterPage extends Component {
                     selectedRaid={selectedRaid}
                     progression={progression}
                     raidSelectOptions={this.raidOptions()}
-                    handleRaidSelect={(selectedRaid) => this.setState({selectedRaid})}
+                    handleRaidSelect={(e) => this.handleChange(e)}
                     bossCount={bossCount}
                     raidProgression={this.raidProgression}
                   />

@@ -1,0 +1,23 @@
+.login-form label,
+.registration-form label {
+  color: #666;
+  font-weight: 600;
+  font-family: 'Lato', sans-serif; }
+
+.login-form input,
+.registration-form input {
+  background: none;
+  color: #fafafa;
+  border: solid 2px #444;
+  border-radius: 5px; }
+
+.login-form button,
+.registration-form button {
+  display: block;
+  margin: 10px auto;
+  padding: 3px 10px;
+  border-radius: 2px;
+  border: solid 2px #e55444;
+  background-color: #f85d4a;
+  color: #fff;
+  text-transform: uppercase; }
