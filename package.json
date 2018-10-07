@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "env-cmd": "^8.0.2",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
@@ -36,6 +37,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:development": "env-cmd .env.development npm run build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
