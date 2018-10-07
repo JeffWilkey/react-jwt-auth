@@ -74,7 +74,6 @@ class CharacterPage extends Component {
     const { progression, items } = this.props.character;
     return (
       <div className="character-page">
-
           { loading ?
             <RingLoader
               className={override}
@@ -136,7 +135,7 @@ class CharacterPage extends Component {
                     selectedTab={this.state.selectedTab}
                   />
                 </div>
-                { selectedTab === 'raid_progression' ?
+                { selectedTab === 'raid_progression' && progression ?
                   <CharacterRaidProgression
                     selectedRaid={selectedRaid}
                     progression={progression}

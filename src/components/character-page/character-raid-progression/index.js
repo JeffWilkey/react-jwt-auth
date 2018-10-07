@@ -21,11 +21,22 @@ class CharacterRaidProgression extends Component {
     })
     return killCount;
   }
+
+  calcNormalProgressBar = () => {
+    const { bossCount } = this.props;
+    if (!this.killCount('heroic') && !this.killCount('mythic')) {
+      console.log(this.killCount('normal'));
+      return this.killCount('normal')/bossCount * 100
+    } else {
+      return (this.killCount('normal')/bossCount * 100) - (this.killCount('heroic')/bossCount * 100) - (this.killCount('mythic')/bossCount * 100)
+    }
+  }
+  
   render() {
     const { progression, selectedRaid, raidSelectOptions, bossCount } = this.props;
-    console.log(`Normal ${this.killCount('normal')}/${bossCount}`)
-    console.log(this.killCount('heroic')/bossCount * 100)
-    console.log(this.killCount('mythic')/bossCount * 100)
+    // console.log(`Normal ${this.killCount('normal')}/${bossCount}`)
+    // console.log(this.killCount('heroic')/bossCount * 100)
+    // console.log(this.killCount('mythic')/bossCount * 100)
     return (
       <div>
         {
@@ -55,12 +66,12 @@ class CharacterRaidProgression extends Component {
             }
             {
               this.killCount('heroic') ?
-              <ProgressBar bsStyle="heroic" label={`Heroic ${this.killCount('heroic')}/${bossCount}`} key={2} now={(this.killCount('heroic')/bossCount * 100) - (this.killCount('mythic')/bossCount * 100)} />
+              <ProgressBar bsStyle="heroic" label={`Heroic ${this.killCount('heroic')}/${bossCount}`} key={2} now={(this.killCount('heroic')/bossCount * 100)} />
               :
               null
             }
 
-            <ProgressBar bsStyle="normal" label={`Normal ${this.killCount('normal')}/${bossCount}`} key={3} now={this.killCount('normal') ? (this.killCount('normal')/bossCount * 100) - (this.killCount('heroic')/bossCount * 100) - (this.killCount('mythic')/bossCount * 100) : 8}/>
+            <ProgressBar bsStyle="normal" label={`Normal ${this.killCount('normal')}/${bossCount}`} key={3} now={this.calcNormalProgressBar()}/>
           </ProgressBar>
           <CharacterBossProgression progression={progression} selectedRaid={selectedRaid} />
         </div>
