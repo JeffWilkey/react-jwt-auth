@@ -1,5 +1,6 @@
 import {API_BASE_URL, BLIZZARD_API_BASE_URL, BLIZZARD_API_KEY} from '../config';
 import {normalizeResponseErrors} from './utils';
+console.log(API_BASE_URL, BLIZZARD_API_BASE_URL, BLIZZARD_API_KEY);
 
 export const FETCH_CHARACTERS_SUCCESS = 'FETCH_CHARACTERS_SUCCESS';
 export const fetchCharactersSuccess = data => ({
