@@ -25,6 +25,19 @@ export const addCharacterError = error => ({
   error
 });
 
+export const DELETE_CHARACTER_SUCCESS = 'DELETE_CHARACTER_SUCCESS';
+export const deleteCharacterSuccess = data => ({
+  type: DELETE_CHARACTER_SUCCESS,
+  data
+});
+
+export const DELETE_CHARACTER_ERROR = 'DELETE_CHARACTER_ERROR';
+export const deleteCharacterError = error => ({
+  type: DELETE_CHARACTER_ERROR,
+  error
+});
+
+
 export const fetchCharacters = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/characters`, {
@@ -73,4 +86,19 @@ export const addCharacter = ({name, realm}) => (dispatch, getState) => {
     .catch(err => {
       dispatch(addCharacterError(err));
     })
+}
+
+export const deleteCharacter = (id) => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/characters/${id}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => dispatch(deleteCharacterSuccess(id)))
+    .catch(err => {
+      dispatch(deleteCharacterError(err));
+    });
 }

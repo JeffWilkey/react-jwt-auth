@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import _ from 'lodash';
 import requiresLogin from './requires-login';
-import {fetchCharacters} from '../actions/characters';
+import {fetchCharacters, deleteCharacter} from '../actions/characters';
 import CharacterForm from './character-form';
 import CharacterRow from './character-row';
 import '../assets/stylesheets/dashboard.css';
@@ -17,17 +17,20 @@ export class Dashboard extends React.Component {
       this.props.dispatch(fetchCharacters());
     }
 
+    handleDelete = (characterId) => {
+      this.props.dispatch(deleteCharacter(characterId));
+    }
+
     render() {
       const { characters } = this.props;
       const renderCharacters = characters.map((character) => (
-        <CharacterRow character={character}/>
+        <CharacterRow character={character} handleDelete={this.handleDelete}/>
       ));
       let error
-      console.log('error', this.props.error)
-      if (this.props.error) {
+      if (this.props.addCharacterError) {
         error = (
           <div className="error-toast">
-            {this.props.error.reason}
+            {this.props.addCharacterError.reason}
           </div>
         )
       }
@@ -54,7 +57,8 @@ const mapStateToProps = state => {
         name: `${currentUser.firstName} ${currentUser.lastName}`,
         protectedData: state.protectedData.data,
         characters: state.characters.data,
-        error: state.characters.error
+        error: state.characters.error,
+        addCharacterError: state.characters.addCharacterError
     };
 };
 

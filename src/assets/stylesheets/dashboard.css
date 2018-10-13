@@ -10,6 +10,8 @@
     .dashboard .dashboard-character-table-header .column {
       flex: 1;
       margin-bottom: 0; }
+      .dashboard .dashboard-character-table-header .column:last-child {
+        margin-right: 15px; }
   .dashboard .none-header {
     text-align: center;
     color: #bababa; }

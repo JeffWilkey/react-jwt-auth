@@ -1,22 +1,35 @@
-.character-row {
-  box-sizing: border-box;
+.character-row-wrapper {
   display: flex;
-  background-color: #333;
-  border: solid 1px #000;
   margin: 5px auto;
-  width: 90%;
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: .2s; }
-  .character-row .column {
-    flex: 1;
-    margin: 5px 0; }
-  .character-row .pipe {
-    border-right: solid 1px #000; }
-  .character-row:hover {
-    cursor: pointer;
-    border-width: 3px; }
+  width: 90%; }
+  .character-row-wrapper .character-row {
+    box-sizing: border-box;
+    display: flex;
+    background-color: #333;
+    border: solid 1px #000;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: .2s;
+    width: 100%;
+    margin-right: 10px; }
+    .character-row-wrapper .character-row .column {
+      flex: 1;
+      margin: 5px 0; }
+    .character-row-wrapper .character-row .pipe {
+      border-right: solid 1px #000; }
+    .character-row-wrapper .character-row:hover {
+      cursor: pointer;
+      border-width: 3px; }
+  .character-row-wrapper .character-delete {
+    color: #777;
+    margin-top: 5px;
+    transition: .2s;
+    z-index: 1000;
+    cursor: pointer; }
+    .character-row-wrapper .character-delete:hover {
+      color: #f85d4a; }
 
 @media (min-width: 760px) {
-  .character-row {
+  .character-row-wrapper {
     width: 60%; } }

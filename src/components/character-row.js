@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { fetchClasses } from '../actions/character-classes';
 import { fetchRaces } from '../actions/character-races';
 import { getClassColor } from '../utils/getClassColor';
+import { FaTrashAlt } from 'react-icons/fa';
 import '../assets/stylesheets/character-row.css';
 
 class CharacterRow extends Component {
@@ -25,20 +26,24 @@ class CharacterRow extends Component {
   }
 
   render() {
-    const { character, classes, races, history } = this.props;
+    const { character, classes, races, history, handleDelete } = this.props;
     const characterClassName = classes.length ? this.getClassName() : 'Loading...';
     const characterClassColor = getClassColor(characterClassName);
     const characterRaceName = races.length ? this.getRaceName() : 'Loading...';
     return (
-      <div style={{ borderColor: characterClassColor, color: characterClassColor}} className="character-row" onClick={() => this.props.history.push(`/characters/${character.realmSlug}/${character.name}`)}>
-        <p className="character-name column">{character.name}</p>
-        <p className="character-race column">
-          {races.length ? characterRaceName : 'Loading...'}
-        </p>
-        <p className="character-class column">
-          {characterClassName}
-        </p>
-        <p className="character-realm column">{character.realm}</p>
+      <div className="character-row-wrapper">
+        <div style={{ borderColor: characterClassColor, color: characterClassColor}} className="character-row" onClick={() => this.props.history.push(`/characters/${character.realmSlug}/${character.name}`)}>
+          <p className="character-name column">{character.name}</p>
+          <p className="character-race column">
+            {races.length ? characterRaceName : 'Loading...'}
+          </p>
+          <p className="character-class column">
+            {characterClassName}
+          </p>
+          <p className="character-realm column">{character.realm}</p>
+
+        </div>
+        <a className="character-delete" onClick={() => handleDelete(character.id)}><FaTrashAlt/></a>
       </div>
     )
   }
