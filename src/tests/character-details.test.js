@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import { shallow, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import CharacterDetails from '../components/character-details';
+import CharacterDetails from '../components/character-page/character-details';
 import {fetchClasses} from '../actions/character-classes';
 
 const middlewares = [thunk];

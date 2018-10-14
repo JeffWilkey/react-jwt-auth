@@ -41,10 +41,11 @@ class CharacterForm extends Component {
           <Field name='realm'
             component={props =>
               <Select
+                className="character-realm-input"
                 value={props.input.value}
                 onChange={props.input.onChange}
                 onBlur={() => props.input.onBlur(props.input.value)}
-                options={realms.map(realm => ({label: realm.name, value: realm.slug}))}
+                options={realms ? realms.map(realm => ({label: realm.name, value: realm.slug})) : []}
                 placeholder="Select Realm"
                 simpleValue
               />
