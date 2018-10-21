@@ -2,6 +2,13 @@ language: node_js
 node_js: node
 cache:
   directories:
-    - node_modules
+  - node_modules
 env:
-  - CI=true
+- CI=true
+deploy:
+  provider: heroku
+  api_key:
+    secure: WOAa/6BwyC/98zIRUHf/pgIfVaHgDJglesIU1y6eBsgY8a7z8gQZc9oyJQYMq5RJvdqpTDFDMBR0KBhzPUqllbxfx2uGcNdxeqdBF/O1l4PZ534WtSsMdmPetgFjTC7TevxQ7IM8k/3d4qEF4YT25zsBCBczoOA+x8OTtAwp92I5n1AXzz5btOTrIVvVpTdfCAoBdGBpiFD2G8SjDgtia1ilsutydM05ACjnYbu9gV+F+iy6gb/xHVuzvYeUxcCbJn3kPh2NJyd4dV+CGa/HU0IuVicFboHm99KwcgL82a7pHplaNVAOKcuKYAy4E65Ov00hCEJkEjzjU+btr1LroEaRa59ltznIjXzcL8KXU6q3grLiOF4Mbukor0QFhJNPF9UlN8VqFVGw31OLPBPEXWu+sML7q/zZ2E6c3fOrk3GunwsxfDhS1bfuA2CQ8XjEXqlqFwR0V3QM8YsaxrKDTsU5RoJSAS19qG+aV+XPeijOJlX5o1Y77AtlKzqCwOMr4I0b/GdDI3NwHq+dOvPyAtCRQv1J1RpzMIGLgSGIjeDn4byH9y7ZfdciTMQkiswihWza4tNIEV3a3ElWHJeBZvFe2fZkAZVWrHQeuf+IFZpSQE1plJ/0o5fwIMLXqlrVZpqWeYsyTwSP4rbu3xHxyagmEGd0VUJ4gDOXtIw0y+Q=
+  app: wowprogress-frontend
+  on:
+    repo: JeffWilkey/wowprogress-frontend
